@@ -50,10 +50,10 @@ Plans:
   3. Clicking "Features", "Pricing", or "FAQ" smooth-scrolls to the correct section (with offset for navbar height)
   4. "Launch App" button is visible and links to `https://app.liftlabb.ca`
   5. On mobile viewport, navigation collapses into a hamburger menu that expands to show all links
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 02-01: TBD
+- [ ] 02-01-PLAN.md -- Navbar component with glassmorphic scroll transition, anchor links, CTA, mobile hamburger menu, and stub page sections
 
 ### Phase 3: Hero Section
 **Goal**: Visitors immediately see a compelling headline, understand what LiftLabb does, and have a clear path to sign up -- all with a polished animated entrance
@@ -98,7 +98,7 @@ Plans:
   3. Each pricing card has a "Start Free Trial" button linking to `https://app.liftlabb.ca` and a feature checklist
   4. FAQ section displays 6 questions that expand/collapse individually with smooth animation
   5. FAQ content covers platforms, free trial, cancellation, data safety, custom exercises, and offline use
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
 - [ ] 05-01: TBD
@@ -115,7 +115,7 @@ Plans:
   3. Footer layout stacks vertically on mobile viewports
   4. `/privacy` and `/terms` pages render full legal content ported from the existing app, styled consistently with the dark theme
   5. Each legal page has a "Back to home" link that returns to the landing page
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
 - [ ] 06-01: TBD
@@ -131,7 +131,7 @@ Plans:
   3. `/sitemap.xml` lists all routes and `/robots.txt` allows all crawlers
   4. Page source contains JSON-LD structured data for SoftwareApplication and FAQPage schemas
   5. All images use `next/image` with responsive sizing, and animations use only GPU-accelerated properties (transform, opacity)
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
 - [ ] 07-01: TBD
@@ -146,7 +146,7 @@ Plans:
   2. Visiting `https://app.liftlabb.ca` in a browser loads the workout tracking app with a valid SSL certificate
   3. `next build` completes with zero errors and zero warnings
   4. All CTA links on the live site correctly navigate to `https://app.liftlabb.ca`
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
 - [ ] 08-01: TBD
@@ -160,7 +160,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Design System | 1/2 | Complete    | 2026-02-27 |
-| 2. Navbar | 0/TBD | Not started | - |
+| 2. Navbar | 0/1 | Planned | - |
 | 3. Hero Section | 0/1 | Not started | - |
 | 4. Features & Screenshots | 0/1 | Not started | - |
 | 5. Pricing & FAQ | 0/TBD | Not started | - |
