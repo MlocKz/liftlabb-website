@@ -13,7 +13,7 @@ This roadmap delivers the LiftLabb marketing website at `liftlabb.ca` -- a stati
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Project Scaffold & Design System** - Next.js 15 project with Tailwind v4, Circular Std font, Motion library, and shared content/animation patterns (completed 2026-02-27)
-- [ ] **Phase 2: Navbar** - Sticky glassmorphic navbar with scroll behavior, anchor links, and mobile responsiveness
+- [x] **Phase 2: Navbar** - Sticky glassmorphic navbar with scroll behavior, anchor links, and mobile responsiveness (completed 2026-02-27)
 - [ ] **Phase 3: Hero Section** - Above-the-fold hero with headline, CTAs, phone mockup, and animated entrance
 - [ ] **Phase 4: Features & Screenshots** - Feature card grid and screenshot gallery sections with scroll-triggered animations
 - [ ] **Phase 5: Pricing & FAQ** - Pricing cards with trial info and accordion FAQ section
@@ -53,7 +53,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md -- Navbar component with glassmorphic scroll transition, anchor links, CTA, mobile hamburger menu, and stub page sections
+- [x] 02-01-PLAN.md -- Navbar component with glassmorphic scroll transition, anchor links, CTA, mobile hamburger menu, and stub page sections
 
 ### Phase 3: Hero Section
 **Goal**: Visitors immediately see a compelling headline, understand what LiftLabb does, and have a clear path to sign up -- all with a polished animated entrance
@@ -158,8 +158,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold & Design System | 1/2 | Complete    | 2026-02-27 |
-| 2. Navbar | 0/1 | Planned | - |
+| 1. Project Scaffold & Design System | 2/2 | Complete    | 2026-02-27 |
+| 2. Navbar | 1/1 | Complete | 2026-02-27 |
 | 3. Hero Section | 0/1 | Not started | - |
 | 4. Features & Screenshots | 0/1 | Not started | - |
 | 5. Pricing & FAQ | 0/1 | Not started | - |

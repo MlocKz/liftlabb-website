@@ -18,12 +18,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Navbar
 
-- [ ] **NAV-01**: Sticky navbar with glassmorphic effect (backdrop-blur, semi-transparent)
-- [ ] **NAV-02**: LiftLabb logo on the left
-- [ ] **NAV-03**: Smooth-scroll anchor links to Features, Pricing, FAQ sections
-- [ ] **NAV-04**: "Launch App" CTA button linking to `https://app.liftlabb.ca`
-- [ ] **NAV-05**: Scroll-based opacity transition (transparent at top, glass on scroll)
-- [ ] **NAV-06**: Mobile-responsive navigation (hamburger menu or simplified)
+- [x] **NAV-01**: Sticky navbar with glassmorphic effect (backdrop-blur, semi-transparent)
+- [x] **NAV-02**: LiftLabb logo on the left
+- [x] **NAV-03**: Smooth-scroll anchor links to Features, Pricing, FAQ sections
+- [x] **NAV-04**: "Launch App" CTA button linking to `https://app.liftlabb.ca`
+- [x] **NAV-05**: Scroll-based opacity transition (transparent at top, glass on scroll)
+- [x] **NAV-06**: Mobile-responsive navigation (hamburger menu or simplified)
 
 ### Hero
 
@@ -154,12 +154,12 @@ Deferred to future release. Tracked but not in current roadmap.
 | FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 1 | Complete |
 | FOUND-06 | Phase 1 | Complete |
-| NAV-01 | Phase 2 | Pending |
-| NAV-02 | Phase 2 | Pending |
-| NAV-03 | Phase 2 | Pending |
-| NAV-04 | Phase 2 | Pending |
-| NAV-05 | Phase 2 | Pending |
-| NAV-06 | Phase 2 | Pending |
+| NAV-01 | Phase 2 | Complete |
+| NAV-02 | Phase 2 | Complete |
+| NAV-03 | Phase 2 | Complete |
+| NAV-04 | Phase 2 | Complete |
+| NAV-05 | Phase 2 | Complete |
+| NAV-06 | Phase 2 | Complete |
 | HERO-01 | Phase 3 | Pending |
 | HERO-02 | Phase 3 | Pending |
 | HERO-03 | Phase 3 | Pending |
