@@ -148,79 +148,79 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | TBD | Pending |
-| FOUND-02 | TBD | Pending |
-| FOUND-03 | TBD | Pending |
-| FOUND-04 | TBD | Pending |
-| FOUND-05 | TBD | Pending |
-| FOUND-06 | TBD | Pending |
-| NAV-01 | TBD | Pending |
-| NAV-02 | TBD | Pending |
-| NAV-03 | TBD | Pending |
-| NAV-04 | TBD | Pending |
-| NAV-05 | TBD | Pending |
-| NAV-06 | TBD | Pending |
-| HERO-01 | TBD | Pending |
-| HERO-02 | TBD | Pending |
-| HERO-03 | TBD | Pending |
-| HERO-04 | TBD | Pending |
-| HERO-05 | TBD | Pending |
-| HERO-06 | TBD | Pending |
-| HERO-07 | TBD | Pending |
-| FEAT-01 | TBD | Pending |
-| FEAT-02 | TBD | Pending |
-| FEAT-03 | TBD | Pending |
-| FEAT-04 | TBD | Pending |
-| FEAT-05 | TBD | Pending |
-| SCRN-01 | TBD | Pending |
-| SCRN-02 | TBD | Pending |
-| SCRN-03 | TBD | Pending |
-| SCRN-04 | TBD | Pending |
-| SCRN-05 | TBD | Pending |
-| PRIC-01 | TBD | Pending |
-| PRIC-02 | TBD | Pending |
-| PRIC-03 | TBD | Pending |
-| PRIC-04 | TBD | Pending |
-| PRIC-05 | TBD | Pending |
-| PRIC-06 | TBD | Pending |
-| PRIC-07 | TBD | Pending |
-| FAQ-01 | TBD | Pending |
-| FAQ-02 | TBD | Pending |
-| FAQ-03 | TBD | Pending |
-| FAQ-04 | TBD | Pending |
-| FOOT-01 | TBD | Pending |
-| FOOT-02 | TBD | Pending |
-| FOOT-03 | TBD | Pending |
-| FOOT-04 | TBD | Pending |
-| FOOT-05 | TBD | Pending |
-| LEGAL-01 | TBD | Pending |
-| LEGAL-02 | TBD | Pending |
-| LEGAL-03 | TBD | Pending |
-| LEGAL-04 | TBD | Pending |
-| SEO-01 | TBD | Pending |
-| SEO-02 | TBD | Pending |
-| SEO-03 | TBD | Pending |
-| SEO-04 | TBD | Pending |
-| SEO-05 | TBD | Pending |
-| SEO-06 | TBD | Pending |
-| SEO-07 | TBD | Pending |
-| SEO-08 | TBD | Pending |
-| DEPLOY-01 | TBD | Pending |
-| DEPLOY-02 | TBD | Pending |
-| DEPLOY-03 | TBD | Pending |
-| DEPLOY-04 | TBD | Pending |
-| DEPLOY-05 | TBD | Pending |
-| DEPLOY-06 | TBD | Pending |
-| PERF-01 | TBD | Pending |
-| PERF-02 | TBD | Pending |
-| PERF-03 | TBD | Pending |
-| PERF-04 | TBD | Pending |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| FOUND-05 | Phase 1 | Pending |
+| FOUND-06 | Phase 1 | Pending |
+| NAV-01 | Phase 2 | Pending |
+| NAV-02 | Phase 2 | Pending |
+| NAV-03 | Phase 2 | Pending |
+| NAV-04 | Phase 2 | Pending |
+| NAV-05 | Phase 2 | Pending |
+| NAV-06 | Phase 2 | Pending |
+| HERO-01 | Phase 3 | Pending |
+| HERO-02 | Phase 3 | Pending |
+| HERO-03 | Phase 3 | Pending |
+| HERO-04 | Phase 3 | Pending |
+| HERO-05 | Phase 3 | Pending |
+| HERO-06 | Phase 3 | Pending |
+| HERO-07 | Phase 3 | Pending |
+| FEAT-01 | Phase 4 | Pending |
+| FEAT-02 | Phase 4 | Pending |
+| FEAT-03 | Phase 4 | Pending |
+| FEAT-04 | Phase 4 | Pending |
+| FEAT-05 | Phase 4 | Pending |
+| SCRN-01 | Phase 4 | Pending |
+| SCRN-02 | Phase 4 | Pending |
+| SCRN-03 | Phase 4 | Pending |
+| SCRN-04 | Phase 4 | Pending |
+| SCRN-05 | Phase 4 | Pending |
+| PRIC-01 | Phase 5 | Pending |
+| PRIC-02 | Phase 5 | Pending |
+| PRIC-03 | Phase 5 | Pending |
+| PRIC-04 | Phase 5 | Pending |
+| PRIC-05 | Phase 5 | Pending |
+| PRIC-06 | Phase 5 | Pending |
+| PRIC-07 | Phase 5 | Pending |
+| FAQ-01 | Phase 5 | Pending |
+| FAQ-02 | Phase 5 | Pending |
+| FAQ-03 | Phase 5 | Pending |
+| FAQ-04 | Phase 5 | Pending |
+| FOOT-01 | Phase 6 | Pending |
+| FOOT-02 | Phase 6 | Pending |
+| FOOT-03 | Phase 6 | Pending |
+| FOOT-04 | Phase 6 | Pending |
+| FOOT-05 | Phase 6 | Pending |
+| LEGAL-01 | Phase 6 | Pending |
+| LEGAL-02 | Phase 6 | Pending |
+| LEGAL-03 | Phase 6 | Pending |
+| LEGAL-04 | Phase 6 | Pending |
+| SEO-01 | Phase 7 | Pending |
+| SEO-02 | Phase 7 | Pending |
+| SEO-03 | Phase 7 | Pending |
+| SEO-04 | Phase 7 | Pending |
+| SEO-05 | Phase 7 | Pending |
+| SEO-06 | Phase 7 | Pending |
+| SEO-07 | Phase 7 | Pending |
+| SEO-08 | Phase 7 | Pending |
+| DEPLOY-01 | Phase 8 | Pending |
+| DEPLOY-02 | Phase 8 | Pending |
+| DEPLOY-03 | Phase 8 | Pending |
+| DEPLOY-04 | Phase 8 | Pending |
+| DEPLOY-05 | Phase 8 | Pending |
+| DEPLOY-06 | Phase 8 | Pending |
+| PERF-01 | Phase 7 | Pending |
+| PERF-02 | Phase 7 | Pending |
+| PERF-03 | Phase 7 | Pending |
+| PERF-04 | Phase 7 | Pending |
 
 **Coverage:**
-- v1 requirements: 60 total
-- Mapped to phases: 0
-- Unmapped: 60 (awaiting roadmap)
+- v1 requirements: 67 total
+- Mapped to phases: 67
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-02-27*
-*Last updated: 2026-02-27 after initial definition*
+*Last updated: 2026-02-27 after roadmap creation*
