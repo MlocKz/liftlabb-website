@@ -33,11 +33,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Circular Std font renders on all text with no visible layout shift on page load
   4. A test element using Motion `whileInView` animates on scroll in the browser
   5. All landing page text content (headlines, features, FAQ items, pricing) lives in a single `lib/content.ts` file
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Scaffold Next.js 15 project, install Motion, copy asset files (font, icons, logo)
+- [ ] 01-02-PLAN.md -- Configure Tailwind v4 design tokens, Circular Std font, content data file, and animation test
 
 ### Phase 2: Navbar
 **Goal**: Visitors see a polished, sticky navigation bar that transitions from transparent to glassmorphic on scroll and works on all screen sizes
@@ -160,7 +160,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold & Design System | 0/TBD | Not started | - |
+| 1. Project Scaffold & Design System | 0/2 | Planning complete | - |
 | 2. Navbar | 0/TBD | Not started | - |
 | 3. Hero Section | 0/TBD | Not started | - |
 | 4. Features & Screenshots | 0/TBD | Not started | - |
