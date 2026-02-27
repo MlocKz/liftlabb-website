@@ -101,8 +101,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 05-01: TBD
-- [ ] 05-02: TBD
+- [ ] 05-01-PLAN.md -- Pricing cards with green glow highlighting and FAQ accordion with AnimatePresence animation
 
 ### Phase 6: Footer & Legal Pages
 **Goal**: Visitors can access legal information and navigate to the app from the bottom of the page, and full Privacy Policy / Terms of Service pages exist at dedicated routes
@@ -163,7 +162,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 2. Navbar | 0/1 | Planned | - |
 | 3. Hero Section | 0/1 | Not started | - |
 | 4. Features & Screenshots | 0/1 | Not started | - |
-| 5. Pricing & FAQ | 0/TBD | Not started | - |
+| 5. Pricing & FAQ | 0/1 | Not started | - |
 | 6. Footer & Legal Pages | 0/TBD | Not started | - |
 | 7. SEO & Performance | 0/TBD | Not started | - |
 | 8. Deployment & Go Live | 0/TBD | Not started | - |
