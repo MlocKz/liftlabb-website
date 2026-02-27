@@ -66,10 +66,10 @@ Plans:
   3. "See Features" link smooth-scrolls to the features section
   4. A phone mockup frame with placeholder image is visible alongside the text content
   5. On page load, the hero content fades up and scales in using Motion animation, with a radial green glow background effect
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md -- Hero component with headline, CTAs, phone mockup, stagger animation, and radial green glow
 
 ### Phase 4: Features & Screenshots
 **Goal**: Visitors scrolling past the hero discover the six core app capabilities in a card grid and see the app in action through a screenshot gallery
@@ -162,7 +162,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Design System | 1/2 | Complete    | 2026-02-27 |
 | 2. Navbar | 0/TBD | Not started | - |
-| 3. Hero Section | 0/TBD | Not started | - |
+| 3. Hero Section | 0/1 | Not started | - |
 | 4. Features & Screenshots | 0/TBD | Not started | - |
 | 5. Pricing & FAQ | 0/TBD | Not started | - |
 | 6. Footer & Legal Pages | 0/TBD | Not started | - |
