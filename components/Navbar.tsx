@@ -10,117 +10,124 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-bg/80 backdrop-blur-md border-b border-border/50 shadow-lg shadow-black/10"
-          : "bg-transparent"
+          ? "bg-bg/70 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_40px_rgba(0,0,0,0.4)]"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group">
             <Image
               src="/LiftLabb-Logo.png"
               alt="LiftLabb"
-              width={32}
-              height={32}
-              className="rounded-lg"
+              width={28}
+              height={28}
+              className="rounded-lg transition-all duration-300 group-hover:shadow-[0_0_12px_rgba(74,222,128,0.3)]"
               priority
             />
-            <span className="text-accent font-bold text-lg tracking-tight">
+            <span className="text-text font-bold text-base tracking-tight
+                             transition-colors duration-300 group-hover:text-accent">
               {siteConfig.name}
             </span>
           </a>
 
-          {/* Desktop nav links */}
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted hover:text-text px-3 py-2 rounded-lg hover:bg-white/5 transition-colors duration-200"
+                className="relative text-[13px] text-muted hover:text-text
+                           px-4 py-2 rounded-lg transition-all duration-200
+                           hover:bg-white/[0.04]"
               >
                 {link.label}
               </a>
             ))}
 
-            {/* Launch App CTA */}
             <a
               href={siteConfig.appUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 bg-accent text-bg text-sm font-bold px-5 py-2 rounded-full hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 active:scale-[0.98] transition-all duration-200"
+              className="ml-3 bg-accent text-bg text-[13px] font-bold
+                         px-5 py-2 rounded-full
+                         hover:shadow-[0_0_20px_rgba(74,222,128,0.3)]
+                         active:scale-[0.97]
+                         transition-all duration-300"
             >
               Launch App
             </a>
           </div>
 
-          {/* Hamburger button (mobile) */}
+          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors"
+            className="md:hidden relative w-10 h-10 flex items-center justify-center
+                       rounded-lg hover:bg-white/[0.04] transition-colors"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
-            <span
-              className={`block h-0.5 w-5 bg-text transition-all duration-300 absolute ${
-                mobileOpen ? "translate-y-0 rotate-45" : "translate-y-[-6px]"
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-text transition-all duration-300 absolute ${
-                mobileOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-text transition-all duration-300 absolute ${
-                mobileOpen ? "translate-y-0 -rotate-45" : "translate-y-[6px]"
-              }`}
-            />
+            <span className={`block h-[1.5px] w-5 bg-text transition-all duration-300 absolute ${
+              mobileOpen ? "translate-y-0 rotate-45" : "translate-y-[-5px]"
+            }`} />
+            <span className={`block h-[1.5px] w-5 bg-text transition-all duration-300 absolute ${
+              mobileOpen ? "opacity-0 scale-50" : "opacity-100 scale-100"
+            }`} />
+            <span className={`block h-[1.5px] w-5 bg-text transition-all duration-300 absolute ${
+              mobileOpen ? "translate-y-0 -rotate-45" : "translate-y-[5px]"
+            }`} />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-bg/95 backdrop-blur-lg border-b border-border/50"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+            className="md:hidden overflow-hidden bg-bg/95 backdrop-blur-xl
+                       border-b border-white/[0.06]"
           >
-            <div className="px-4 py-3 flex flex-col">
-              {navLinks.map((link) => (
-                <a
+            <div className="px-6 py-4 flex flex-col gap-1">
+              {navLinks.map((link, i) => (
+                <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-muted hover:text-text text-base py-3 px-3 rounded-lg hover:bg-white/5 transition-colors border-b border-border/30 last:border-b-0"
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.3 }}
+                  className="text-muted hover:text-text text-base py-3 px-3
+                             rounded-lg hover:bg-white/[0.04] transition-colors"
                 >
                   {link.label}
-                </a>
+                </motion.a>
               ))}
-              <a
+              <motion.a
                 href={siteConfig.appUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 bg-accent text-bg font-bold py-3 rounded-full text-center hover:bg-accent/90 transition-colors"
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05, duration: 0.3 }}
+                className="mt-2 bg-accent text-bg font-bold py-3 rounded-full
+                           text-center transition-colors hover:bg-accent/90"
               >
                 Launch App
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         )}
