@@ -12,7 +12,7 @@ This roadmap delivers the LiftLabb marketing website at `liftlabb.ca` -- a stati
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Project Scaffold & Design System** - Next.js 15 project with Tailwind v4, Circular Std font, Motion library, and shared content/animation patterns
+- [x] **Phase 1: Project Scaffold & Design System** - Next.js 15 project with Tailwind v4, Circular Std font, Motion library, and shared content/animation patterns (completed 2026-02-27)
 - [ ] **Phase 2: Navbar** - Sticky glassmorphic navbar with scroll behavior, anchor links, and mobile responsiveness
 - [ ] **Phase 3: Hero Section** - Above-the-fold hero with headline, CTAs, phone mockup, and animated entrance
 - [ ] **Phase 4: Features & Screenshots** - Feature card grid and screenshot gallery sections with scroll-triggered animations
@@ -160,7 +160,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold & Design System | 1/2 | In Progress | - |
+| 1. Project Scaffold & Design System | 1/2 | Complete    | 2026-02-27 |
 | 2. Navbar | 0/TBD | Not started | - |
 | 3. Hero Section | 0/TBD | Not started | - |
 | 4. Features & Screenshots | 0/TBD | Not started | - |
