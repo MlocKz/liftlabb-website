@@ -32,3 +32,8 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Offset anchor scroll position to clear fixed navbar (h-16 = 64px, + 16px breathing room) */
+section[id] {
+  scroll-margin-top: 5rem;
+}

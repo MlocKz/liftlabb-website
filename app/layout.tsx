@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import Navbar from '@/components/Navbar'
 import './globals.css'
 
 const circularStd = localFont({
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={circularStd.variable}>
       <body className="bg-bg text-text font-sans antialiased min-h-screen">
+        <Navbar />
         {children}
       </body>
     </html>
