@@ -3,6 +3,7 @@ import Features from "@/components/Features"
 import Screenshots from "@/components/Screenshots"
 import PricingSection from "@/components/PricingSection"
 import FAQSection from "@/components/FAQSection"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
@@ -32,8 +33,7 @@ export default function Home() {
 
       <FAQSection />
 
-      {/* Bottom breathing room */}
-      <div className="h-20" />
+      <Footer />
     </main>
   )
 }
