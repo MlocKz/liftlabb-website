@@ -82,11 +82,10 @@ Plans:
   3. Feature cards animate into view with staggered timing as the user scrolls to them
   4. "See it in action" section displays placeholder screenshots inside CSS-drawn phone frame mockups
   5. Screenshot gallery scrolls/swipes horizontally on mobile with smooth behavior
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- Feature card grid with stagger animation, icon SVGs, hover glow, and horizontal screenshot gallery with CSS phone mockups
 
 ### Phase 5: Pricing & FAQ
 **Goal**: Visitors understand exactly what LiftLabb costs, see the value of the annual plan, and get answers to common questions -- all driving toward starting a free trial
@@ -163,7 +162,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 1. Project Scaffold & Design System | 1/2 | Complete    | 2026-02-27 |
 | 2. Navbar | 0/TBD | Not started | - |
 | 3. Hero Section | 0/1 | Not started | - |
-| 4. Features & Screenshots | 0/TBD | Not started | - |
+| 4. Features & Screenshots | 0/1 | Not started | - |
 | 5. Pricing & FAQ | 0/TBD | Not started | - |
 | 6. Footer & Legal Pages | 0/TBD | Not started | - |
 | 7. SEO & Performance | 0/TBD | Not started | - |
