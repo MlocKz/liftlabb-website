@@ -9,10 +9,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUND-01**: Next.js 15 project scaffolded with App Router, Tailwind v4 (CSS-first config), and TypeScript
+- [x] **FOUND-01**: Next.js 15 project scaffolded with App Router, Tailwind v4 (CSS-first config), and TypeScript
 - [ ] **FOUND-02**: LiftLabb design system configured via Tailwind `@theme` (colors, font, border-radius from existing app)
-- [ ] **FOUND-03**: Circular Std font loaded via `next/font/local` with zero layout shift
-- [ ] **FOUND-04**: Motion library installed for scroll-triggered animations
+- [x] **FOUND-03**: Circular Std font loaded via `next/font/local` with zero layout shift
+- [x] **FOUND-04**: Motion library installed for scroll-triggered animations
 - [ ] **FOUND-05**: Centralized content data file (`lib/content.ts`) for all text, features, FAQ items, pricing
 - [ ] **FOUND-06**: Shared scroll animation hook/pattern using Motion `whileInView`
 
@@ -148,10 +148,10 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01 | Phase 1 | Pending |
+| FOUND-01 | Phase 1 | Complete |
 | FOUND-02 | Phase 1 | Pending |
-| FOUND-03 | Phase 1 | Pending |
-| FOUND-04 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Complete |
+| FOUND-04 | Phase 1 | Complete |
 | FOUND-05 | Phase 1 | Pending |
 | FOUND-06 | Phase 1 | Pending |
 | NAV-01 | Phase 2 | Pending |
