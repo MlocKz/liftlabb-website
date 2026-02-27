@@ -8,6 +8,12 @@ export const siteConfig = {
   appUrl: "https://app.liftlabb.ca",
 } as const
 
+export const navLinks = [
+  { label: "Features", href: "#features" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
+] as const
+
 export interface Feature {
   title: string
   description: string
