@@ -6,7 +6,7 @@ export default function TestAnimation() {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="p-8 bg-card rounded-card border border-border max-w-md"
     >
