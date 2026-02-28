@@ -40,6 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# claude
+.claude/
+.playwright-mcp/
+
 # project-specific
 LiftLabb Logo.png
 firebase-debug.log
