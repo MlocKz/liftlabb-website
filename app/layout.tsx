@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import CursorGlow from '@/components/CursorGlow'
+import ScrollProgress from '@/components/ScrollProgress'
 import Navbar from '@/components/Navbar'
 import StructuredData from '@/components/StructuredData'
 import './globals.css'
@@ -59,6 +61,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={circularStd.variable}>
       <body className="bg-bg text-text font-sans antialiased min-h-screen">
+        <CursorGlow />
+        <ScrollProgress />
         <Navbar />
         {children}
         <StructuredData />
