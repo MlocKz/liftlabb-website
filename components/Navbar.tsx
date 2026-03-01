@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
 import { siteConfig, navLinks } from "@/lib/content"
@@ -8,20 +8,35 @@ import { siteConfig, navLinks } from "@/lib/content"
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [navVisible, setNavVisible] = useState(true)
+  const lastScrollY = useRef(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      setScrolled(currentScrollY > 50)
+
+      if (currentScrollY < 100) {
+        setNavVisible(true)
+      } else if (currentScrollY > lastScrollY.current + 10) {
+        setNavVisible(false)
+      } else if (currentScrollY < lastScrollY.current - 10) {
+        setNavVisible(true)
+      }
+
+      lastScrollY.current = currentScrollY
+    }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-bg/70 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_40px_rgba(0,0,0,0.4)]"
           : "bg-transparent border-b border-transparent"
-      }`}
+      } ${navVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -49,7 +64,7 @@ export default function Navbar() {
                 href={link.href}
                 className="relative text-[13px] text-muted hover:text-text
                            px-4 py-2 rounded-lg transition-all duration-200
-                           hover:bg-white/[0.04]"
+                           hover:bg-white/[0.04] link-underline"
               >
                 {link.label}
               </a>

@@ -125,7 +125,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-muted hover:text-text transition-colors duration-200"
+                      className="text-sm text-muted hover:text-text transition-colors duration-200 link-underline"
                     >
                       {link.label}
                     </a>
@@ -136,7 +136,7 @@ export default function Footer() {
                     href={siteConfig.appUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-accent hover:text-accent-bright transition-colors duration-200"
+                    className="text-sm text-accent hover:text-accent-bright transition-colors duration-200 link-underline"
                   >
                     Launch App
                   </a>
@@ -153,7 +153,7 @@ export default function Footer() {
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-muted hover:text-text transition-colors duration-200"
+                      className="text-sm text-muted hover:text-text transition-colors duration-200 link-underline"
                     >
                       {link.label}
                     </a>
