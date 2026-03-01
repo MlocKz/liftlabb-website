@@ -186,100 +186,101 @@ export default function PricingSection() {
             }
 
             return (
-              <div
-                key={plan.name}
-                className={`pricing-card ${plan.highlight ? "gradient-border-bright" : "gradient-border"}`}
-                style={{ opacity: 0, backfaceVisibility: "hidden", willChange: "transform" }}
-              >
-                <div className={`relative h-full rounded-[15px] p-8
-                  ${plan.highlight
-                    ? "bg-card"
-                    : "bg-card"
-                  }`}
+              <TiltCard key={plan.name} spotlight className="group">
+                <div
+                  className={`pricing-card ${plan.highlight ? "gradient-border-bright" : "gradient-border"}`}
+                  style={{ opacity: 0, backfaceVisibility: "hidden", willChange: "transform" }}
                 >
-                  {/* Badge */}
-                  {plan.badge && (
-                    <div className="absolute -top-px left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <span className="bg-accent text-bg text-xs font-bold
-                                       px-4 py-1 rounded-full shadow-[0_0_20px_rgba(74,222,128,0.3)]">
-                        {plan.badge}
+                  <div className={`relative h-full rounded-[15px] p-8
+                    ${plan.highlight
+                      ? "bg-card"
+                      : "bg-card"
+                    }`}
+                  >
+                    {/* Badge */}
+                    {plan.badge && (
+                      <div className="absolute -top-px left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <span className="bg-accent text-bg text-xs font-bold
+                                         px-4 py-1 rounded-full shadow-[0_0_20px_rgba(74,222,128,0.3)]">
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <h3 className="text-sm font-bold text-muted uppercase tracking-wider mb-6">
+                      {plan.name}
+                    </h3>
+
+                    <div className="mb-1">
+                      <span className="text-5xl font-bold text-text tracking-tight">
+                        $<span
+                          ref={(el) => { priceRefs.current[planIndex] = el }}
+                        >
+                          {plan.price.replace("$", "")}
+                        </span>
                       </span>
+                      <span className="text-muted text-base ml-1">{plan.period}</span>
                     </div>
-                  )}
 
-                  <h3 className="text-sm font-bold text-muted uppercase tracking-wider mb-6">
-                    {plan.name}
-                  </h3>
+                    {plan.savings ? (
+                      <div className="mb-6">
+                        <span className="text-accent text-sm font-bold">{plan.savings}</span>
+                        {plan.monthly && (
+                          <span className="text-muted text-sm ml-2">({plan.monthly})</span>
+                        )}
+                      </div>
+                    ) : (
+                      <p className="text-muted/60 text-sm mb-6">Billed monthly</p>
+                    )}
 
-                  <div className="mb-1">
-                    <span className="text-5xl font-bold text-text tracking-tight">
-                      $<span
-                        ref={(el) => { priceRefs.current[planIndex] = el }}
+                    <MagneticButton className="w-full">
+                      <a
+                        href={siteConfig.appUrl}
+                        className={`btn-shimmer block w-full text-center py-3.5 rounded-full
+                                    font-bold text-sm transition-all duration-300 ${
+                          plan.highlight
+                            ? "bg-accent text-bg shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:shadow-[0_0_30px_rgba(74,222,128,0.35)]"
+                            : "bg-white/[0.06] text-text hover:bg-white/[0.1] border border-white/[0.06]"
+                        }`}
                       >
-                        {plan.price.replace("$", "")}
-                      </span>
-                    </span>
-                    <span className="text-muted text-base ml-1">{plan.period}</span>
-                  </div>
+                        Start Free Trial
+                      </a>
+                    </MagneticButton>
 
-                  {plan.savings ? (
-                    <div className="mb-6">
-                      <span className="text-accent text-sm font-bold">{plan.savings}</span>
-                      {plan.monthly && (
-                        <span className="text-muted text-sm ml-2">({plan.monthly})</span>
-                      )}
+                    <div className="mt-8 pt-6 border-t border-white/[0.06]">
+                      <p className="text-xs text-muted/60 uppercase tracking-wider font-bold mb-4">
+                        Everything included
+                      </p>
+                      <ul className="space-y-3">
+                        {plan.features.map((feature, featureIndex) => (
+                          <li key={feature} className="flex items-center gap-3 text-sm text-muted">
+                            <svg
+                              className="w-4 h-4 text-accent flex-shrink-0"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                            >
+                              <path
+                                ref={(el) => {
+                                  if (!checkmarkRefs.current[planIndex]) {
+                                    checkmarkRefs.current[planIndex] = []
+                                  }
+                                  checkmarkRefs.current[planIndex][featureIndex] = el
+                                }}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  ) : (
-                    <p className="text-muted/60 text-sm mb-6">Billed monthly</p>
-                  )}
-
-                  <MagneticButton className="w-full">
-                    <a
-                      href={siteConfig.appUrl}
-                      className={`btn-shimmer block w-full text-center py-3.5 rounded-full
-                                  font-bold text-sm transition-all duration-300 ${
-                        plan.highlight
-                          ? "bg-accent text-bg shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:shadow-[0_0_30px_rgba(74,222,128,0.35)]"
-                          : "bg-white/[0.06] text-text hover:bg-white/[0.1] border border-white/[0.06]"
-                      }`}
-                    >
-                      Start Free Trial
-                    </a>
-                  </MagneticButton>
-
-                  <div className="mt-8 pt-6 border-t border-white/[0.06]">
-                    <p className="text-xs text-muted/60 uppercase tracking-wider font-bold mb-4">
-                      Everything included
-                    </p>
-                    <ul className="space-y-3">
-                      {plan.features.map((feature, featureIndex) => (
-                        <li key={feature} className="flex items-center gap-3 text-sm text-muted">
-                          <svg
-                            className="w-4 h-4 text-accent flex-shrink-0"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                          >
-                            <path
-                              ref={(el) => {
-                                if (!checkmarkRefs.current[planIndex]) {
-                                  checkmarkRefs.current[planIndex] = []
-                                }
-                                checkmarkRefs.current[planIndex][featureIndex] = el
-                              }}
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             )
           })}
         </div>
