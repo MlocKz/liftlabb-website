@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback, useState } from "react"
 
 // ── Configuration ──────────────────────────────────────────────
 const COLORS = [
@@ -52,6 +52,7 @@ function createBlob(w: number, h: number): Blob {
 
 // ── Component ──────────────────────────────────────────────────
 export default function LiquidEther() {
+  const [reducedMotion, setReducedMotion] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const blobsRef = useRef<Blob[]>([])
   const mouseRef = useRef({ x: 0, y: 0, active: false })
@@ -296,6 +297,24 @@ export default function LiquidEther() {
       window.removeEventListener("touchend", handleTouchEnd)
     }
   }, [animate, handleResize])
+
+  // ── Reduced motion preference ─────────────────────────────
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    setReducedMotion(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
+    mq.addEventListener("change", handler)
+    return () => mq.removeEventListener("change", handler)
+  }, [])
+
+  // ── Static fallback for reduced motion ────────────────────
+  if (reducedMotion) {
+    return (
+      <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-bg to-bg" />
+      </div>
+    )
+  }
 
   return (
     <div
