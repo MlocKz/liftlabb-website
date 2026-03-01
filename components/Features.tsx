@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
 import { features } from "@/lib/content"
 import FeatureIcon from "@/components/FeatureIcon"
+import AnimatedIcon from "@/components/AnimatedIcon"
 import TiltCard from "@/components/TiltCard"
 
 const titleWords = [
@@ -122,7 +123,9 @@ export default function Features() {
                                 hover:bg-card hover:border-accent/20
                                 hover:shadow-[0_0_30px_rgba(74,222,128,0.08)]
                                 hover:-translate-y-0.5">
-                  <FeatureIcon name={feature.icon} />
+                  <AnimatedIcon>
+                    <FeatureIcon name={feature.icon} />
+                  </AnimatedIcon>
                   <h3 className="text-base font-bold text-text mb-2">{feature.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{feature.description}</p>
                 </div>
