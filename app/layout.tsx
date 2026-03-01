@@ -20,10 +20,13 @@ export const metadata: Metadata = {
     template: '%s | LiftLabb',
   },
   description: 'The workout tracker built for lifters who want to get stronger. Log workouts, build programs, track progression, and access 350+ exercises.',
-  keywords: ['workout tracker', 'gym log', 'strength training', 'workout app', 'fitness tracker', 'weight lifting app', 'exercise tracker'],
+  keywords: ['workout tracker', 'gym log', 'strength training', 'workout app', 'fitness tracker', 'weight lifting app', 'exercise tracker', 'gym tracker', 'progressive overload', 'workout planner'],
   authors: [{ name: 'LiftLabb' }],
   creator: 'LiftLabb',
   metadataBase: new URL('https://liftlabb.ca'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -31,20 +34,11 @@ export const metadata: Metadata = {
     siteName: 'LiftLabb',
     title: 'LiftLabb - Track your gains. Ditch the spreadsheet.',
     description: 'The workout tracker built for lifters who want to get stronger. Log workouts, build programs, and track your progression.',
-    images: [
-      {
-        url: '/LiftLabb-Logo.png',
-        width: 400,
-        height: 400,
-        alt: 'LiftLabb Logo',
-      },
-    ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'LiftLabb - Track your gains. Ditch the spreadsheet.',
     description: 'The workout tracker built for lifters who want to get stronger.',
-    images: ['/LiftLabb-Logo.png'],
   },
   icons: {
     icon: '/LiftLabb-Logo.png',
