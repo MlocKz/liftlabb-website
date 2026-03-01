@@ -4,6 +4,8 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
 import { pricingPlans, siteConfig } from "@/lib/content"
+import MagneticButton from "@/components/MagneticButton"
+import TiltCard from "@/components/TiltCard"
 
 const titleWords = [
   { text: "Simple,", gradient: false },
@@ -231,17 +233,19 @@ export default function PricingSection() {
                     <p className="text-muted/60 text-sm mb-6">Billed monthly</p>
                   )}
 
-                  <a
-                    href={siteConfig.appUrl}
-                    className={`btn-shimmer block w-full text-center py-3.5 rounded-full
-                                font-bold text-sm transition-all duration-300 ${
-                      plan.highlight
-                        ? "bg-accent text-bg shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:shadow-[0_0_30px_rgba(74,222,128,0.35)]"
-                        : "bg-white/[0.06] text-text hover:bg-white/[0.1] border border-white/[0.06]"
-                    }`}
-                  >
-                    Start Free Trial
-                  </a>
+                  <MagneticButton className="w-full">
+                    <a
+                      href={siteConfig.appUrl}
+                      className={`btn-shimmer block w-full text-center py-3.5 rounded-full
+                                  font-bold text-sm transition-all duration-300 ${
+                        plan.highlight
+                          ? "bg-accent text-bg shadow-[0_0_20px_rgba(74,222,128,0.2)] hover:shadow-[0_0_30px_rgba(74,222,128,0.35)]"
+                          : "bg-white/[0.06] text-text hover:bg-white/[0.1] border border-white/[0.06]"
+                      }`}
+                    >
+                      Start Free Trial
+                    </a>
+                  </MagneticButton>
 
                   <div className="mt-8 pt-6 border-t border-white/[0.06]">
                     <p className="text-xs text-muted/60 uppercase tracking-wider font-bold mb-4">

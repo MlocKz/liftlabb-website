@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
 import { siteConfig } from "@/lib/content"
+import MagneticButton from "@/components/MagneticButton"
 
 function SplitText({ text, className }: { text: string; className?: string }) {
   return (
@@ -173,29 +174,33 @@ export default function Hero() {
             style={{ opacity: 0 }}
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
           >
-            <a
-              href={siteConfig.appUrl}
-              className="btn-shimmer inline-flex items-center justify-center px-8 py-4
-                         bg-accent text-bg font-bold rounded-full text-base
-                         shadow-[0_0_30px_rgba(74,222,128,0.3)]
-                         hover:shadow-[0_0_50px_rgba(74,222,128,0.4)]
-                         hover:scale-[1.02] active:scale-[0.98]
-                         transition-all duration-300"
-            >
-              Get Started Free
-              <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </a>
-            <a
-              href="#features"
-              className="inline-flex items-center justify-center px-8 py-4
-                         border border-border-2 text-muted rounded-full text-base
-                         hover:border-accent/40 hover:text-text
-                         transition-all duration-300"
-            >
-              See Features
-            </a>
+            <MagneticButton>
+              <a
+                href={siteConfig.appUrl}
+                className="btn-shimmer inline-flex items-center justify-center px-8 py-4
+                           bg-accent text-bg font-bold rounded-full text-base
+                           shadow-[0_0_30px_rgba(74,222,128,0.3)]
+                           hover:shadow-[0_0_50px_rgba(74,222,128,0.4)]
+                           hover:scale-[1.02] active:scale-[0.98]
+                           transition-all duration-300"
+              >
+                Get Started Free
+                <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </MagneticButton>
+            <MagneticButton>
+              <a
+                href="#features"
+                className="inline-flex items-center justify-center px-8 py-4
+                           border border-border-2 text-muted rounded-full text-base
+                           hover:border-accent/40 hover:text-text
+                           transition-all duration-300"
+              >
+                See Features
+              </a>
+            </MagneticButton>
           </div>
         </div>
 
