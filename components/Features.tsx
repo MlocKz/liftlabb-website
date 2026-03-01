@@ -74,7 +74,7 @@ export default function Features() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} id="features" className="relative py-28 px-6">
+    <section ref={sectionRef} id="features" className="relative py-28 px-6 overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]
                       bg-accent/[0.03] blur-[120px] rounded-full pointer-events-none" aria-hidden="true" />

@@ -140,7 +140,7 @@ export default function PricingSection() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} id="pricing" className="relative py-28 px-6">
+    <section ref={sectionRef} id="pricing" className="relative py-28 px-6 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
