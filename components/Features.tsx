@@ -1,64 +1,120 @@
 "use client"
-import { motion } from "motion/react"
+
+import { useRef } from "react"
+import { useGSAP } from "@gsap/react"
+import { gsap } from "@/lib/gsap-init"
 import { features } from "@/lib/content"
 import FeatureIcon from "@/components/FeatureIcon"
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] as const },
-  },
-}
+const titleWords = [
+  { text: "Everything", gradient: false },
+  { text: "you", gradient: false },
+  { text: "need", gradient: false },
+  { text: "to", gradient: false },
+  { text: "train", gradient: true },
+  { text: "smarter", gradient: true },
+]
 
 export default function Features() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    // Word-by-word title reveal
+    const words = headingRef.current?.querySelectorAll(".title-word")
+    if (words && words.length > 0) {
+      gsap.fromTo(
+        words,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            once: true,
+          },
+        }
+      )
+    }
+
+    // 3D card stagger entrance
+    const cards = gridRef.current?.querySelectorAll(".feature-card")
+    if (cards && cards.length > 0) {
+      gsap.fromTo(
+        cards,
+        {
+          opacity: 0,
+          y: 60,
+          rotateX: 15,
+          rotateY: (_index: number) => (_index % 2 === 0 ? 10 : -10),
+        },
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          rotateY: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 75%",
+            once: true,
+          },
+        }
+      )
+    }
+  }, { scope: sectionRef })
+
   return (
-    <section id="features" className="relative py-28 px-6">
+    <section ref={sectionRef} id="features" className="relative py-28 px-6">
       {/* Subtle background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px]
                       bg-accent/[0.03] blur-[120px] rounded-full pointer-events-none" aria-hidden="true" />
 
       <div className="relative max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-            Everything you need to{" "}
-            <span className="bg-gradient-to-r from-accent to-accent-bright bg-clip-text text-transparent">
-              train smarter
-            </span>
+        <div className="text-center mb-16">
+          <h2
+            ref={headingRef}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
+          >
+            {titleWords.map((word, i) => (
+              <span key={i}>
+                <span
+                  className={`title-word inline-block ${
+                    word.gradient
+                      ? "bg-gradient-to-r from-accent to-accent-bright bg-clip-text text-transparent"
+                      : ""
+                  }`}
+                  style={{ opacity: 0 }}
+                >
+                  {word.text}
+                </span>
+                {/* Add space after each word except the last */}
+                {i < titleWords.length - 1 && " "}
+              </span>
+            ))}
           </h2>
           <p className="mt-4 text-muted text-lg max-w-xl mx-auto">
             Purpose-built tools that replace your notebook, spreadsheet, and guesswork.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+        <div
+          ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          style={{ perspective: 1000 }}
         >
           {features.map((feature) => (
-            <motion.div
+            <div
               key={feature.title}
-              variants={cardVariants}
-              className="group"
+              className="feature-card group"
+              style={{ opacity: 0, willChange: "transform" }}
             >
               <div className="h-full rounded-card bg-card/80 border border-white/[0.06]
                               p-6 transition-all duration-300
@@ -69,9 +125,9 @@ export default function Features() {
                 <h3 className="text-base font-bold text-text mb-2">{feature.title}</h3>
                 <p className="text-muted text-sm leading-relaxed">{feature.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
