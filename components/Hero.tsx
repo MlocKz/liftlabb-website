@@ -4,6 +4,7 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
 import { siteConfig } from "@/lib/content"
+import Image from "next/image"
 import MagneticButton from "@/components/MagneticButton"
 import ButtonSparkle from "@/components/ButtonSparkle"
 
@@ -135,7 +136,7 @@ export default function Hero() {
       {/* ── Content ────────────────────────────── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full
                       flex flex-col lg:flex-row items-center gap-16 lg:gap-20
-                      pt-28 pb-20 lg:py-0">
+                      pt-28 pb-32 lg:py-0">
 
         {/* Text column */}
         <div className="flex-1 text-center lg:text-left max-w-2xl lg:max-w-none">
@@ -227,16 +228,16 @@ export default function Hero() {
                 <div className="absolute top-3 left-1/2 -translate-x-1/2
                                 w-[90px] h-[26px] bg-card-2 rounded-full z-10" />
 
-                {/* Screen content placeholder */}
-                <div className="w-full h-full flex flex-col items-center justify-center gap-3
-                                bg-gradient-to-b from-bg via-bg to-accent/5">
-                  <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round"
-                            d="M6.5 6.5h11M6.5 17.5h11M2 12h20M4 8v8M8 6v12M16 6v12M20 8v8" />
-                    </svg>
-                  </div>
-                  <span className="text-muted/60 text-xs font-medium tracking-wide">App Preview</span>
+                {/* Screen content */}
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/screenshots/today-view.png"
+                    alt="LiftLabb workout tracking"
+                    fill
+                    className="object-cover object-top"
+                    sizes="290px"
+                    priority
+                  />
                 </div>
 
                 {/* Screen reflection */}

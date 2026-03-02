@@ -133,13 +133,14 @@ export const pricingPlans: PricingPlan[] = [
 
 export interface Screenshot {
   name: string
-  color: string
+  src: string
 }
 
 export const screenshots: Screenshot[] = [
-  { name: "Today View", color: "#1a3a2a" },
-  { name: "Program Builder", color: "#1a2a3a" },
-  { name: "Charts", color: "#2a1a3a" },
-  { name: "Exercise Library", color: "#3a2a1a" },
-  { name: "Workout Log", color: "#1a3a3a" },
+  { name: "Today View", src: "/screenshots/today-view.png" },
+  { name: "Program Builder", src: "/screenshots/program-builder.png" },
+  { name: "Charts", src: "/screenshots/history.png" },
+  { name: "Formulas", src: "/screenshots/formulas.png" },
+  { name: "Exercise Library", src: "/screenshots/exercise-library.png" },
+  { name: "Workout Log", src: "/screenshots/workout-log.png" },
 ]

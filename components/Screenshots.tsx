@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef } from "react"
+import Image from "next/image"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
 import { screenshots } from "@/lib/content"
@@ -95,7 +96,7 @@ export default function Screenshots() {
                         pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6"
         >
           {/* Left spacer */}
-          <div className="shrink-0 w-[max(24px,calc((100%-5*220px-4*20px)/2))]" aria-hidden="true" />
+          <div className="shrink-0 w-[max(24px,calc((100%-6*220px-5*20px)/2))]" aria-hidden="true" />
           {screenshots.map((s) => (
             <div
               key={s.name}
@@ -103,20 +104,18 @@ export default function Screenshots() {
               style={{ opacity: 0 }}
             >
               <PhoneMockup className="w-[220px]">
-                <div
-                  className="w-full h-full flex flex-col items-center justify-center gap-2"
-                  style={{ backgroundColor: s.color }}
-                >
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                    <div className="w-3 h-3 rounded-sm bg-white/20" />
-                  </div>
-                  <span className="text-white/50 text-xs font-medium tracking-wide">{s.name}</span>
-                </div>
+                <Image
+                  src={s.src}
+                  alt={s.name}
+                  fill
+                  className="object-cover object-top"
+                  sizes="220px"
+                />
               </PhoneMockup>
             </div>
           ))}
           {/* Right spacer */}
-          <div className="shrink-0 w-[max(24px,calc((100%-5*220px-4*20px)/2))]" aria-hidden="true" />
+          <div className="shrink-0 w-[max(24px,calc((100%-6*220px-5*20px)/2))]" aria-hidden="true" />
         </div>
       </div>
     </section>

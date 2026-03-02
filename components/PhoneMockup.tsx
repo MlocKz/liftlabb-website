@@ -16,7 +16,7 @@ export default function PhoneMockup({
         <div className="absolute top-2.5 left-1/2 -translate-x-1/2
                         w-[70px] h-[22px] bg-card-2 rounded-full z-10" />
         {/* Content */}
-        <div className="w-full h-full">
+        <div className="relative w-full h-full">
           {children}
         </div>
         {/* Screen reflection */}
