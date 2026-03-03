@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
@@ -9,10 +9,31 @@ import PhoneMockup from "@/components/PhoneMockup"
 
 const titleWords = "See it in action".split(" ")
 
+// Fan rotation angles: center card = 0, outer cards increase
+function getFanTransform(index: number, total: number) {
+  const center = (total - 1) / 2
+  const offset = index - center
+  return {
+    rotateY: offset * 5,
+    translateZ: -Math.abs(offset) * 30,
+    translateX: offset * 15,
+    scale: 1 - Math.abs(offset) * 0.03,
+  }
+}
+
 export default function Screenshots() {
   const sectionRef = useRef<HTMLElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const galleryRef = useRef<HTMLDivElement>(null)
+  const [activeCard, setActiveCard] = useState<number | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024)
+    check()
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
 
   useGSAP(() => {
     // Title word-by-word reveal
@@ -36,9 +57,11 @@ export default function Screenshots() {
       )
     }
 
-    // Phone mockup scale-rotate entrance
     const cards = galleryRef.current?.querySelectorAll(".screenshot-card")
-    if (cards && cards.length > 0) {
+    if (!cards || cards.length === 0) return
+
+    if (isMobile) {
+      // Mobile: scale-rotate entrance
       gsap.fromTo(
         cards,
         { scale: 0.8, rotate: -5, opacity: 0 },
@@ -56,8 +79,79 @@ export default function Screenshots() {
           },
         }
       )
+    } else {
+      // Desktop: cards start stacked at center, fan out
+      const total = cards.length
+      cards.forEach((card) => {
+        gsap.set(card, {
+          opacity: 0,
+          rotateY: 0,
+          z: 0,
+          x: 0,
+          scale: 0.8,
+        })
+      })
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: galleryRef.current,
+          start: "top 75%",
+          once: true,
+        },
+      })
+
+      cards.forEach((card, i) => {
+        const t = getFanTransform(i, total)
+        tl.to(
+          card,
+          {
+            opacity: 1,
+            rotateY: t.rotateY,
+            z: t.translateZ,
+            x: t.translateX,
+            scale: t.scale,
+            duration: 0.7,
+            ease: "back.out(1.4)",
+          },
+          i * 0.1
+        )
+      })
     }
-  }, { scope: sectionRef })
+  }, { scope: sectionRef, dependencies: [isMobile] })
+
+  // Handle card hover/tap for desktop
+  const handleCardEnter = (index: number) => {
+    if (isMobile) return
+    setActiveCard(index)
+    const cards = galleryRef.current?.querySelectorAll(".screenshot-card")
+    if (!cards) return
+    gsap.to(cards[index], {
+      z: 40,
+      scale: 1.05,
+      duration: 0.3,
+      ease: "power2.out",
+    })
+  }
+
+  const handleCardLeave = (index: number) => {
+    if (isMobile) return
+    setActiveCard(null)
+    const cards = galleryRef.current?.querySelectorAll(".screenshot-card")
+    if (!cards) return
+    const t = getFanTransform(index, cards.length)
+    gsap.to(cards[index], {
+      z: t.translateZ,
+      scale: t.scale,
+      duration: 0.3,
+      ease: "power2.out",
+    })
+  }
+
+  // Handle tap for mobile
+  const handleCardTap = (index: number) => {
+    if (!isMobile) return
+    setActiveCard((prev) => (prev === index ? null : index))
+  }
 
   return (
     <section ref={sectionRef} id="screenshots" className="relative py-28 overflow-hidden">
@@ -88,36 +182,80 @@ export default function Screenshots() {
         </div>
       </div>
 
-      {/* Scrollable gallery with edge fades */}
-      <div className="fade-edges">
-        <div
-          ref={galleryRef}
-          className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth
-                        pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-6"
-        >
-          {/* Left spacer */}
-          <div className="shrink-0 w-[max(24px,calc((100%-6*220px-5*20px)/2))]" aria-hidden="true" />
-          {screenshots.map((s) => (
-            <div
-              key={s.name}
-              className="screenshot-card snap-center shrink-0"
-              style={{ opacity: 0 }}
-            >
-              <PhoneMockup className="w-[220px]">
-                <Image
-                  src={s.src}
-                  alt={s.name}
-                  fill
-                  className="object-cover object-top"
-                  sizes="220px"
-                />
-              </PhoneMockup>
-            </div>
-          ))}
-          {/* Right spacer */}
-          <div className="shrink-0 w-[max(24px,calc((100%-6*220px-5*20px)/2))]" aria-hidden="true" />
+      {isMobile ? (
+        /* ── Mobile: horizontal scroll carousel ── */
+        <div className="fade-edges">
+          <div
+            ref={galleryRef}
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth
+                       pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+                       px-[max(24px,calc((100vw-220px)/2))]"
+          >
+            {screenshots.map((s, i) => (
+              <div
+                key={s.name}
+                className="screenshot-card snap-center shrink-0"
+                style={{ opacity: 0 }}
+                onClick={() => handleCardTap(i)}
+              >
+                <div className={`transition-shadow duration-300 rounded-[2.5rem] ${activeCard === i ? "card-glow" : ""}`}>
+                  <PhoneMockup className="w-[220px]">
+                    <Image
+                      src={s.src}
+                      alt={s.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="220px"
+                    />
+                  </PhoneMockup>
+                </div>
+                <p className={`text-center text-sm mt-3 transition-colors duration-300 ${
+                  activeCard === i ? "text-accent" : "text-muted"
+                }`}>
+                  {s.name}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        /* ── Desktop: 3D card fan ── */
+        <div className="perspective-1000 max-w-6xl mx-auto px-6">
+          <div
+            ref={galleryRef}
+            className="flex justify-center items-center gap-4"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {screenshots.map((s, i) => (
+              <div
+                key={s.name}
+                className="screenshot-card"
+                style={{ opacity: 0, transformStyle: "preserve-3d" }}
+                onMouseEnter={() => handleCardEnter(i)}
+                onMouseLeave={() => handleCardLeave(i)}
+                onClick={() => handleCardTap(i)}
+              >
+                <div className={`transition-shadow duration-300 rounded-[2.5rem] ${activeCard === i ? "card-glow" : ""}`}>
+                  <PhoneMockup className="w-[200px]">
+                    <Image
+                      src={s.src}
+                      alt={s.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="200px"
+                    />
+                  </PhoneMockup>
+                </div>
+                <p className={`text-center text-sm mt-3 transition-colors duration-300 ${
+                  activeCard === i ? "text-accent" : "text-muted"
+                }`}>
+                  {s.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   )
 }
