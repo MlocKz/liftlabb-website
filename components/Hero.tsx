@@ -1,9 +1,9 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState, useEffect, useCallback } from "react"
 import { useGSAP } from "@gsap/react"
 import { gsap } from "@/lib/gsap-init"
-import { siteConfig } from "@/lib/content"
+import { siteConfig, screenshots } from "@/lib/content"
 import Image from "next/image"
 import MagneticButton from "@/components/MagneticButton"
 import ButtonSparkle from "@/components/ButtonSparkle"
@@ -28,6 +28,10 @@ export default function Hero() {
   const descRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const screenRefs = useRef<(HTMLDivElement | null)[]>([])
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } })
@@ -103,6 +107,79 @@ export default function Hero() {
       })
     }
   }, { scope: sectionRef })
+
+  const advanceSlide = useCallback(() => {
+    setCurrentIndex((prev) => {
+      const next = (prev + 1) % screenshots.length
+      const screens = screenRefs.current
+      if (screens[prev]) {
+        gsap.to(screens[prev], { opacity: 0, scale: 0.95, duration: 0.6, ease: "power2.inOut" })
+      }
+      if (screens[next]) {
+        gsap.to(screens[next], { opacity: 1, scale: 1, duration: 0.6, ease: "power2.inOut" })
+      }
+      return next
+    })
+  }, [])
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (prefersReduced || isPaused) {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      return
+    }
+    intervalRef.current = setInterval(advanceSlide, 3000)
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [isPaused, advanceSlide])
+
+  const handlePhoneTap = useCallback(() => {
+    setIsPaused((p) => !p)
+  }, [])
+
+  useEffect(() => {
+    const phoneEl = phoneRef.current
+    if (!phoneEl) return
+    if (window.matchMedia("(pointer: coarse)").matches) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+
+    const perspectiveWrapper = phoneEl.querySelector(".perspective-1000") as HTMLElement
+    if (!perspectiveWrapper) return
+    const phoneFrame = perspectiveWrapper.querySelector(".phone-tilt-target") as HTMLElement
+    if (!phoneFrame) return
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = perspectiveWrapper.getBoundingClientRect()
+      const centerX = rect.left + rect.width / 2
+      const centerY = rect.top + rect.height / 2
+      const rotateY = ((e.clientX - centerX) / (rect.width / 2)) * 8
+      const rotateX = -((e.clientY - centerY) / (rect.height / 2)) * 8
+      gsap.to(phoneFrame, {
+        rotateX,
+        rotateY,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+    }
+
+    const handleMouseLeave = () => {
+      gsap.to(phoneFrame, {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+    }
+
+    perspectiveWrapper.addEventListener("mousemove", handleMouseMove)
+    perspectiveWrapper.addEventListener("mouseleave", handleMouseLeave)
+
+    return () => {
+      perspectiveWrapper.removeEventListener("mousemove", handleMouseMove)
+      perspectiveWrapper.removeEventListener("mouseleave", handleMouseLeave)
+    }
+  }, [])
 
   return (
     <section
@@ -211,16 +288,20 @@ export default function Hero() {
         </div>
 
         {/* Phone mockup column */}
-        <div ref={phoneRef} style={{ opacity: 0 }} className="flex-1 flex justify-center lg:justify-end">
-          <div className="relative">
+        <div ref={phoneRef} style={{ opacity: 0 }} className="flex-1 flex justify-center">
+          <div className="relative perspective-1000">
             {/* Phone glow */}
             <div className="absolute -inset-8 bg-accent/6 blur-[60px] rounded-full" aria-hidden="true" />
 
             {/* Phone frame */}
-            <div className="relative bg-card-2 rounded-[3rem] p-[10px]
-                            shadow-2xl shadow-black/50
-                            ring-1 ring-white/[0.05]
-                            h-[520px] w-[250px] sm:h-[600px] sm:w-[290px]">
+            <div
+              className="phone-tilt-target relative bg-card-2 rounded-[3rem] p-[10px]
+                          shadow-2xl shadow-black/50
+                          ring-1 ring-white/[0.05]
+                          h-[520px] w-[250px] sm:h-[600px] sm:w-[290px]
+                          cursor-pointer"
+              onClick={handlePhoneTap}
+            >
               {/* Inner screen */}
               <div className="relative w-full h-full rounded-[2.25rem] overflow-hidden bg-bg
                               ring-1 ring-white/[0.05]">
@@ -228,17 +309,24 @@ export default function Hero() {
                 <div className="absolute top-3 left-1/2 -translate-x-1/2
                                 w-[90px] h-[26px] bg-card-2 rounded-full z-10" />
 
-                {/* Screen content */}
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/screenshots/today-view.png"
-                    alt="LiftLabb workout tracking"
-                    fill
-                    className="object-cover object-top"
-                    sizes="290px"
-                    priority
-                  />
-                </div>
+                {/* Stacked screens for crossfade */}
+                {screenshots.map((s, i) => (
+                  <div
+                    key={s.name}
+                    ref={(el) => { screenRefs.current[i] = el }}
+                    className="absolute inset-0"
+                    style={{ opacity: i === 0 ? 1 : 0 }}
+                  >
+                    <Image
+                      src={s.src}
+                      alt={`LiftLabb ${s.name}`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="290px"
+                      priority={i === 0}
+                    />
+                  </div>
+                ))}
 
                 {/* Screen reflection */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
@@ -247,6 +335,29 @@ export default function Hero() {
               {/* Home indicator */}
               <div className="absolute bottom-[10px] left-1/2 -translate-x-1/2
                               w-[120px] h-[4px] bg-white/10 rounded-full" />
+            </div>
+
+            {/* Dot indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {screenshots.map((s, i) => (
+                <button
+                  key={s.name}
+                  className={`dot-indicator ${i === currentIndex ? "active" : ""}`}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    const screens = screenRefs.current
+                    if (screens[currentIndex]) {
+                      gsap.to(screens[currentIndex], { opacity: 0, scale: 0.95, duration: 0.6, ease: "power2.inOut" })
+                    }
+                    if (screens[i]) {
+                      gsap.to(screens[i], { opacity: 1, scale: 1, duration: 0.6, ease: "power2.inOut" })
+                    }
+                    setCurrentIndex(i)
+                    setIsPaused(true)
+                  }}
+                  aria-label={`View ${s.name} screenshot`}
+                />
+              ))}
             </div>
           </div>
         </div>
