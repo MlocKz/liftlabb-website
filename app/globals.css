@@ -180,6 +180,31 @@ section[id] {
   transform: scaleX(1);
 }
 
+/* ── 3D Perspective Containers ───────────── */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* ── Screenshot Card Glow on Active ──────── */
+.card-glow {
+  box-shadow:
+    0 0 30px rgba(74, 222, 128, 0.15),
+    0 0 60px rgba(74, 222, 128, 0.05);
+}
+
+/* ── Dot Indicator ───────────────────────── */
+.dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.dot-indicator.active {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
 /* ── Reduced Motion ────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

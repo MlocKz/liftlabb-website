@@ -139,7 +139,7 @@ export interface Screenshot {
 export const screenshots: Screenshot[] = [
   { name: "Today View", src: "/screenshots/today-view.png" },
   { name: "Program Builder", src: "/screenshots/program-builder.png" },
-  { name: "Charts", src: "/screenshots/history.png" },
+  { name: "Progression", src: "/screenshots/history.png" },
   { name: "Formulas", src: "/screenshots/formulas.png" },
   { name: "Exercise Library", src: "/screenshots/exercise-library.png" },
   { name: "Workout Log", src: "/screenshots/workout-log.png" },
