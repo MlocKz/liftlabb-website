@@ -59,29 +59,19 @@ export default function TermsPage() {
           </section>
 
           <section>
-            <h2>4. Free Trial & Subscriptions</h2>
+            <h2>4. Access & Future Pricing</h2>
             <p>
-              LiftLabb offers a <strong>7-day free trial</strong> for all new users. No credit card
-              is required to start the trial. After the trial period, continued access requires
-              a paid subscription (Monthly at $2.99/month or Annual at $19.99/year).
-            </p>
-            <p className="mt-3">
-              Subscriptions automatically renew at the end of each billing period unless cancelled
-              before the renewal date. You can cancel your subscription at any time from your
-              account settings.
+              LiftLabb is currently <strong>free during early access</strong>. All features are
+              included at no cost. No credit card is required. We may introduce paid subscription
+              plans in the future, with advance notice to all users.
             </p>
           </section>
 
           <section>
             <h2>5. Refunds</h2>
             <p>
-              Monthly subscriptions are non-refundable. Annual subscriptions may be eligible for
-              a prorated refund within 14 days of purchase if you have not used the Service
-              extensively during that period. Contact{" "}
-              <a href="mailto:support@liftlabb.ca" className="text-accent hover:text-accent-bright transition-colors">
-                support@liftlabb.ca
-              </a>{" "}
-              for refund requests.
+              LiftLabb is currently free. If paid plans are introduced in the future, refund
+              policies will be outlined at that time.
             </p>
           </section>
 

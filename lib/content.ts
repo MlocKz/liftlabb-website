@@ -64,12 +64,12 @@ export const faqItems: FAQItem[] = [
     answer: "LiftLabb works on any device with a web browser -- iPhone, Android, tablet, or desktop. No app download required.",
   },
   {
-    question: "Is there a free trial?",
-    answer: "Yes! Every plan comes with a 7-day free trial. No credit card required to start.",
+    question: "Is LiftLabb really free?",
+    answer: "Yes! LiftLabb is completely free during early access. No credit card required, no hidden fees. Every feature is included.",
   },
   {
-    question: "Can I cancel anytime?",
-    answer: "Absolutely. Cancel your subscription anytime from your account settings. No questions asked.",
+    question: "Will it always be free?",
+    answer: "LiftLabb is free during early access. We'll give plenty of notice before introducing any paid plans.",
   },
   {
     question: "Is my data safe?",
@@ -98,28 +98,11 @@ export interface PricingPlan {
 
 export const pricingPlans: PricingPlan[] = [
   {
-    name: "Monthly",
-    price: "$2.99",
-    period: "/mo",
-    badge: null,
-    highlight: false,
-    features: [
-      "Unlimited workout logging",
-      "Custom programs",
-      "Progression charts",
-      "Exercise library",
-      "Cross-device sync",
-      "Smart auto-fill",
-    ],
-  },
-  {
-    name: "Annual",
-    price: "$19.99",
-    period: "/yr",
-    badge: "Best Value",
+    name: "Early Access",
+    price: "$0",
+    period: "",
+    badge: "Free Early Access",
     highlight: true,
-    savings: "Save 44%",
-    monthly: "$1.67/mo",
     features: [
       "Unlimited workout logging",
       "Custom programs",
@@ -130,6 +113,40 @@ export const pricingPlans: PricingPlan[] = [
     ],
   },
 ]
+
+// ── Paid plans (preserved for future use) ──
+// {
+//   name: "Monthly",
+//   price: "$2.99",
+//   period: "/mo",
+//   badge: null,
+//   highlight: false,
+//   features: [
+//     "Unlimited workout logging",
+//     "Custom programs",
+//     "Progression charts",
+//     "Exercise library",
+//     "Cross-device sync",
+//     "Smart auto-fill",
+//   ],
+// },
+// {
+//   name: "Annual",
+//   price: "$19.99",
+//   period: "/yr",
+//   badge: "Best Value",
+//   highlight: true,
+//   savings: "Save 44%",
+//   monthly: "$1.67/mo",
+//   features: [
+//     "Unlimited workout logging",
+//     "Custom programs",
+//     "Progression charts",
+//     "Exercise library",
+//     "Cross-device sync",
+//     "Smart auto-fill",
+//   ],
+// },
 
 export interface Screenshot {
   name: string

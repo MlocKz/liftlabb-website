@@ -223,7 +223,7 @@ export default function Hero() {
                              bg-accent/10 border border-accent/20 rounded-full
                              text-accent text-xs font-bold tracking-wide uppercase">
               <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
-              Free for 7 days
+              Free Early Access
             </span>
           </div>
 

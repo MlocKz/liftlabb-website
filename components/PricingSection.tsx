@@ -8,16 +8,15 @@ import MagneticButton from "@/components/MagneticButton"
 import TiltCard from "@/components/TiltCard"
 
 const titleWords = [
-  { text: "Simple,", gradient: false },
-  { text: "transparent", gradient: false },
-  { text: "pricing", gradient: true },
+  { text: "Free", gradient: false },
+  { text: "early", gradient: false },
+  { text: "access", gradient: true },
 ]
 
 export default function PricingSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
   const gridRef = useRef<HTMLDivElement>(null)
-  const priceRefs = useRef<(HTMLSpanElement | null)[]>([])
   const checkmarkRefs = useRef<(SVGPathElement | null)[][]>([])
 
   useGSAP(() => {
@@ -69,29 +68,6 @@ export default function PricingSection() {
         ease: "power2.out",
       }
     )
-
-    // ── Price counter animation ──
-    pricingPlans.forEach((plan, index) => {
-      const priceEl = priceRefs.current[index]
-      if (!priceEl) return
-
-      // Parse numeric value from price string (e.g. "$2.99" → 2.99)
-      const targetPrice = parseFloat(plan.price.replace("$", ""))
-      const counter = { value: 0 }
-
-      tl.to(
-        counter,
-        {
-          value: targetPrice,
-          duration: 1.5,
-          ease: "power2.out",
-          onUpdate: () => {
-            priceEl.textContent = counter.value.toFixed(2)
-          },
-        },
-        "-=0.6" // Overlap slightly with previous card flip
-      )
-    })
 
     // ── Checkmark SVG path draw ──
     pricingPlans.forEach((plan, planIndex) => {
@@ -170,13 +146,13 @@ export default function PricingSection() {
             ))}
           </h2>
           <p className="mt-4 text-muted text-lg">
-            Start your 7-day free trial. No credit card required.
+            Everything included. No credit card required.
           </p>
         </div>
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto"
+          className="grid grid-cols-1 gap-6 max-w-md mx-auto"
           style={{ perspective: 1200 }}
         >
           {pricingPlans.map((plan, planIndex) => {
@@ -211,27 +187,14 @@ export default function PricingSection() {
                       {plan.name}
                     </h3>
 
-                    <div className="mb-1">
+                    <div className="mb-6">
                       <span className="text-5xl font-bold text-text tracking-tight">
-                        $<span
-                          ref={(el) => { priceRefs.current[planIndex] = el }}
-                        >
-                          {plan.price.replace("$", "")}
-                        </span>
+                        {plan.price}
                       </span>
-                      <span className="text-muted text-base ml-1">{plan.period}</span>
+                      {plan.period && (
+                        <span className="text-muted text-base ml-1">{plan.period}</span>
+                      )}
                     </div>
-
-                    {plan.savings ? (
-                      <div className="mb-6">
-                        <span className="text-accent text-sm font-bold">{plan.savings}</span>
-                        {plan.monthly && (
-                          <span className="text-muted text-sm ml-2">({plan.monthly})</span>
-                        )}
-                      </div>
-                    ) : (
-                      <p className="text-muted/60 text-sm mb-6">Billed monthly</p>
-                    )}
 
                     <MagneticButton className="w-full">
                       <a
@@ -243,7 +206,7 @@ export default function PricingSection() {
                             : "bg-white/[0.06] text-text hover:bg-white/[0.1] border border-white/[0.06]"
                         }`}
                       >
-                        Start Free Trial
+                        Get Started Free
                       </a>
                     </MagneticButton>
 

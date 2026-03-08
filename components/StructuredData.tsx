@@ -15,17 +15,10 @@ const appSchema = {
   offers: [
     {
       '@type': 'Offer',
-      price: '2.99',
+      price: '0',
       priceCurrency: 'USD',
-      name: 'Monthly',
-      description: '7-day free trial, then $2.99/month',
-    },
-    {
-      '@type': 'Offer',
-      price: '19.99',
-      priceCurrency: 'USD',
-      name: 'Annual',
-      description: '7-day free trial, then $19.99/year (save 44%)',
+      name: 'Early Access',
+      description: 'Free during early access. All features included.',
     },
   ],
 }
@@ -44,18 +37,18 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'Is there a free trial?',
+      name: 'Is LiftLabb really free?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes! Every plan comes with a 7-day free trial. No credit card required to start.',
+        text: 'Yes! LiftLabb is completely free during early access. No credit card required, no hidden fees. Every feature is included.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Can I cancel anytime?',
+      name: 'Will it always be free?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Absolutely. Cancel your subscription anytime from your account settings. No questions asked.',
+        text: 'LiftLabb is free during early access. We will give plenty of notice before introducing any paid plans.',
       },
     },
     {

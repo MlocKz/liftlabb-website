@@ -59,8 +59,8 @@ export default function PrivacyPage() {
             <p>
               Your data is stored securely on <strong>Google Cloud Platform</strong> via
               Firebase. We use industry-standard encryption for data in transit (TLS/SSL)
-              and at rest. We do not store payment information directly — all payments
-              are processed securely through Stripe.
+              and at rest. If payment processing is introduced in the future, payments
+              will be processed securely through Stripe.
             </p>
           </section>
 
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc pl-5 mt-3 space-y-1.5">
               <li><strong>Firebase / Google Cloud</strong> — infrastructure and database hosting</li>
-              <li><strong>Stripe</strong> — payment processing (only payment-related data)</li>
+              <li><strong>Stripe</strong> — payment processing, if introduced (only payment-related data)</li>
             </ul>
             <p className="mt-3">
               We do not use advertising networks or share data with third-party marketing services.
